@@ -1,26 +1,19 @@
 # vue-image-magnifier
 
-## Project setup
+## setup
 ```
-npm install
-```
-
-### Compiles and hot-reloads for development
-```
-npm run serve
+npm install vue-image-magnifier
 ```
 
-### Compiles and minifies for production
+### use
 ```
-npm run build
-```
-
-### Run your tests
-```
-npm run test
+import ImageMagnifier from vue-image-magnifier
+Vue.use(ImageMagnifier)
+//or
+import {ImageMagnifier} from vue-image-magnifier
 ```
 
-### Lints and fixes files
+### demo
 ```
-npm run lint
+npm run demo
 ```

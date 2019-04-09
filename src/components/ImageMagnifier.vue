@@ -1,5 +1,5 @@
 <template>
-    <div class="image-magnifier">
+    <div class="image-magnifier" :style="style">
         <img :width="width"
              :height="height"
              :src="src"
@@ -9,9 +9,9 @@
              @mouseout="handleOut"
              ref="img"
         />
-        <div class="image-magnifier__mask" :style="maskStyle" v-show="zoomShow" ref="mask">
+        <div class="image-magnifier__mask" :class="maskClass" :style="maskStyle" v-show="zoomShow" ref="mask">
         </div>
-        <div class="image-magnifier__zoom" :style="zoomStyle" v-show="zoomShow">
+        <div class="image-magnifier__zoom" :class="zoomClass" :style="zoomStyle" v-show="zoomShow">
             <img :src="zoomSrc" :style="zoomImgStyle"/>
         </div>
     </div>
@@ -68,6 +68,12 @@
       }
     },
     computed: {
+      style() {
+        return {
+          position: 'relative',
+          cursor: 'move'
+        }
+      },
       maskStyle() {
         return {
           position: 'absolute',
@@ -109,6 +115,8 @@
         this.imgRect = this.$refs.img && this.$refs.img.getBoundingClientRect();
         this.$nextTick(() => {
           this.maskRect = this.$refs.mask && this.$refs.mask.getBoundingClientRect();
+
+          //计算大图宽高
           this.zoomImgWidth = (this.imgRect.width / this.maskRect.width) * this.zoomWidth;
           this.zoomImgHeight = (this.imgRect.height / this.maskRect.height) * this.zoomHeight;
         })
@@ -119,6 +127,8 @@
         this.maskX = this.outXCheck(e.pageX - this.imgRect.left);
         this.maskY = this.outYCheck(e.pageY - this.imgRect.top);
         this.zoomLeft = this.imgRect.width + 10;
+
+        //计算大图偏移量
         this.zoomPosition.x = this.maskX * (this.zoomImgWidth / this.imgRect.width)
         this.zoomPosition.y = this.maskY * (this.zoomImgHeight / this.imgRect.height)
       },
@@ -148,20 +158,3 @@
     }
   }
 </script>
-
-<style scoped>
-    .image-magnifier {
-        position: relative;
-        cursor: move;
-    }
-
-    .image-magnifier__img {
-
-    }
-
-    .image-magnifier__mask {
-    }
-
-    .image-magnifier__zoom {
-    }
-</style>

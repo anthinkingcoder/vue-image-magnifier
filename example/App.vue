@@ -1,5 +1,10 @@
 <template>
-    <ImageMagnifier :src="image" :zoom-src="image" width="400" height="300" zoom-width="400" zoom-height="300"></ImageMagnifier>
+    <ImageMagnifier :src="image"
+                    :zoom-src="image"
+                    width="400"
+                    height="300"
+                    zoom-width="400"
+                    zoom-height="300"></ImageMagnifier>
 </template>
 
 <script>
