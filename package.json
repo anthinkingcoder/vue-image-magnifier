@@ -1,6 +1,6 @@
 {
   "name": "vue-image-magnifier",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "private": false,
   "main": "lib/magnifier.umd.js",
   "scripts": {
