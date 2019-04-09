@@ -17,3 +17,6 @@ import {ImageMagnifier} from vue-image-magnifier
 ```
 npm run demo
 ```
+
+### live example
+> [code open](https://codepen.io/zhoulin/pen/dLOgPP)
