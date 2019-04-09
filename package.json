@@ -44,5 +44,15 @@
     "> 1%",
     "last 2 versions",
     "not ie <= 8"
-  ]
+  ],
+  "keywords": [
+    "vue",
+    "imagnifier",
+    "image",
+    "zoom"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/anthinkingcoder/vue-image-magnifier.git"
+  }
 }
