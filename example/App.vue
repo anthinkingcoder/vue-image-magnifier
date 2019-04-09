@@ -17,14 +17,6 @@
     data() {
       return {
         image,
-        config: {
-          width:400,
-          height:300,
-          maskWidth:100,
-          maskHeight:100,
-          maskColor:'#fff',
-          maskOpacity:0.5
-        }
       }
     }
   }

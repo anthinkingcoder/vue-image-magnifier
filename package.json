@@ -1,7 +1,7 @@
 {
   "name": "vue-image-magnifier",
   "version": "0.1.1",
-  "private": true,
+  "private": false,
   "main": "lib/magnifier.umd.js",
   "scripts": {
     "serve": "vue-cli-service serve",
