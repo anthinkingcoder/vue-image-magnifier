@@ -84,6 +84,7 @@
           left: 0,
           top: 0,
           transform: `translate(${this.maskX}px, ${this.maskY}px)`,
+          willChange: 'transform',
           pointerEvents: 'none'
         }
       },
@@ -101,6 +102,7 @@
         return {
           width: `${this.zoomImgWidth}px`,
           height: `${this.zoomImgHeight}px`,
+          willChange: 'transform',
           transform: `translate(-${this.zoomPosition.x}px, -${this.zoomPosition.y}px)`,
         }
       }
