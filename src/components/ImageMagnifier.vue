@@ -85,7 +85,8 @@
           top: 0,
           transform: `translate(${this.maskX}px, ${this.maskY}px)`,
           willChange: 'transform',
-          pointerEvents: 'none'
+          pointerEvents: 'none',
+          zIndex: 1000
         }
       },
       zoomStyle() {
@@ -95,7 +96,8 @@
           position: 'absolute',
           left: `${this.zoomLeft}px`,
           top: 0,
-          overflow: 'hidden'
+          overflow: 'hidden',
+          zIndex: 1000
         }
       },
       zoomImgStyle() {
