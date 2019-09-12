@@ -48,7 +48,15 @@
       maskOpacity: {
         default: .5
       },
-      maskClass: {}
+      maskClass: {},
+      delayIn: {
+        type: Number,
+        default: 0
+      },
+      delayOut: {
+        type: Number,
+        default: 0
+      }
     },
     data() {
       return {
@@ -64,7 +72,7 @@
         zoomPosition: {
           x: 0,
           y: 0
-        }
+        },
       }
     },
     computed: {
@@ -115,17 +123,25 @@
     },
     methods: {
       handleOver() {
-        this.zoomShow = true;
-        this.imgRect = this.$refs.img && this.$refs.img.getBoundingClientRect();
+        if (this.delayIn === 0) {
+          this.zoomShow = true;
+          this.calcZoomSize();
+        }else {
+          setTimeout(() => {
+            this.zoomShow = true;
+            this.calcZoomSize();
+          },this.delayIn)
+        }
+      },
+      calcZoomSize () {
         this.$nextTick(() => {
+          this.imgRect = this.$refs.img && this.$refs.img.getBoundingClientRect();
           this.maskRect = this.$refs.mask && this.$refs.mask.getBoundingClientRect();
 
           //计算大图宽高
           this.zoomImgWidth = (this.imgRect.width / this.maskRect.width) * this.zoomWidth;
           this.zoomImgHeight = (this.imgRect.height / this.maskRect.height) * this.zoomHeight;
         })
-
-
       },
       handleMove(e) {
         this.maskX = this.outXCheck(e.pageX - this.imgRect.left);
@@ -137,7 +153,13 @@
         this.zoomPosition.y = this.maskY * (this.zoomImgHeight / this.imgRect.height)
       },
       handleOut() {
-        this.zoomShow = false;
+        if (this.delayOut === 0) {
+          this.zoomShow = false;
+        }else {
+          setTimeout(() => {
+            this.zoomShow = false;
+          }, this.delayOut);
+        }
       },
       outXCheck(x) {
         x = x - this.maskRect.width / 2;
