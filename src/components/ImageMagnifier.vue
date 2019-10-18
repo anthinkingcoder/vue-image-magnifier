@@ -144,8 +144,8 @@
         this.zoomImgHeight = (this.imgRect.height / this.maskRect.height) * this.zoomHeight;
       },
       handleMove(e) {
-        this.maskX = this.outXCheck(e.pageX - this.imgRect.left);
-        this.maskY = this.outYCheck(e.pageY - this.imgRect.top);
+        this.maskX = this.outXCheck(e.clientX - this.imgRect.left);
+        this.maskY = this.outYCheck(e.clientY - this.imgRect.top);
         this.zoomLeft = this.imgRect.width + 10;
 
         //计算大图偏移量
