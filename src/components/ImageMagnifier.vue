@@ -140,10 +140,15 @@
         this.imgRect = this.$refs.img && this.$refs.img.getBoundingClientRect();
         this.maskRect = this.$refs.mask && this.$refs.mask.getBoundingClientRect();
         //计算大图宽高
-        this.zoomImgWidth = (this.imgRect.width / this.maskRect.width) * this.zoomWidth;
-        this.zoomImgHeight = (this.imgRect.height / this.maskRect.height) * this.zoomHeight;
+        if (this.imgRect && this.maskRect) {
+          this.zoomImgWidth = (this.imgRect.width / this.maskRect.width) * this.zoomWidth;
+          this.zoomImgHeight = (this.imgRect.height / this.maskRect.height) * this.zoomHeight;
+        }
       },
       handleMove(e) {
+        if (!this.imgRect || !this.maskRect) {
+          return;
+        }
         this.maskX = this.outXCheck(e.clientX - this.imgRect.left);
         this.maskY = this.outYCheck(e.clientY - this.imgRect.top);
         this.zoomLeft = this.imgRect.width + 10;
